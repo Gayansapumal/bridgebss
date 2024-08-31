@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Single-Line Gantt Chart with Descriptions</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700" rel="stylesheet">
+    <style>
+        body,
+        html {
+            font-family: "Roboto", sans-serif;
+            background-color: #cddade;
+            height: 100%;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .header {
+            color: #202125;
+            margin-bottom: 40px;
+        }
+
+        .header h2 {
+            font-weight: 600;
+        }
+
+        .header p {
+            font-weight: 300;
+        }
+
+        .wrapper {
+            max-width: 1200px;
+            min-width: 700px;
+            margin: 0 auto;
+            padding: 40px;
+        }
+
+        .gantt-container {
+            width: 100%;
+            overflow-x: auto;
+        }
+
+        .gantt-table {
+            border-collapse: collapse;
+            width: 100%;
+            box-shadow: 0 75px 125px -57px #7e8f94;
+        }
+
+        .gantt-table th,
+        .gantt-table td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: center;
+        }
+
+        .gantt-table th {
+            background-color: #f2f2f2;
+            position: sticky;
+            top: 0;
+            z-index: 1;
+        }
+
+        .gantt-task {
+            color: white;
+            padding: 5px;
+            border-radius: 3px;
+            margin: 1px;
+            font-weight: 500;
+            background-image: repeating-linear-gradient(45deg, transparent, transparent 5px, rgba(255, 255, 255, .1) 5px, rgba(255, 255, 255, .1) 12px);
+            cursor: pointer;
+            position: relative;
+        }
+
+        .gantt-task.front-end {
+            background-color: coral;
+        }
+
+        .gantt-task.android {
+            background-color: lightblue;
+        }
+
+        .description {
+            margin-top: 30px;
+        }
+
+        .description h3 {
+            font-size: 18px;
+            color: #202125;
+            margin-bottom: 10px;
+        }
+
+        .description p {
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+
+        .description ul {
+            list-style-type: disc;
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="wrapper">
+    <div class="header">
+        <h2>Single-Line Gantt Chart with Descriptions</h2>
+    </div>
+
+    <div class="gantt-container">
+        <table class="gantt-table">
+            <thead>
+                <tr>
+                    <th>Role</th>
+                    <th>Week 36</th>
+                    <th>Week 37</th>
+                    <th>Week 38</th>
+                    <th>Week 39</th>
+                    <th>Week 40</th>
+                    <th>Week 41</th>
+                    <th>Week 42</th>
+                    <th>Week 43</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Front-End Dev</td>
+                    <td colspan="2" class="gantt-task front-end">Requirement Analysis and Planning</td>
+                    <td colspan="2" class="gantt-task front-end">Login & Registration Development</td>
+                    <td class="gantt-task front-end">Dashboard Development</td>
+                    <td colspan="2" class="gantt-task front-end">Settings & Notifications</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Android Dev</td>
+                    <td colspan="2" class="gantt-task android">Requirement Analysis and Planning</td>
+                    <td colspan="1" class="gantt-task android">User Authentication Development</td>
+                    <td colspan="2" class="gantt-task android">Dashboard Development</td>
+                    <td colspan="2" class="gantt-task android">Notifications Development</td>
+                    <td class="gantt-task android">Performance Optimization</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="description">
+        <h3>Front-End Developer</h3>
+        <p><strong>Week 1: Initial Setup and Planning</strong></p>
+        <ul>
+            <li><strong>Task 1.1: Requirement Analysis and Planning</strong></li>
+            <ul>
+                <li>Analyze the design requirements for all UI features.</li>
+                <li>Plan the development and release schedule.</li>
+            </ul>
+            <li><strong>Task 1.2: Project Setup</strong></li>
+            <ul>
+                <li>Set up the development environment, including access to design assets and front-end frameworks (e.g., React, Redux).</li>
+                <li>Review existing codebases and UI components.</li>
+            </ul>
+        </ul>
+
+        <p><strong>Week 2: Feature 1 Development and Release (Login and Registration Pages)</strong></p>
+        <ul>
+            <li><strong>Task 2.1: Design Implementation</strong></li>
+            <ul>
+                <li>Develop the login and registration pages based on the provided designs.</li>
+            </ul>
+            <li><strong>Task 2.2: Internal Testing</strong></li>
+            <ul>
+                <li>Conduct internal testing to ensure the pages are responsive and work across different devices and browsers.</li>
+            </ul>
+            <li><strong>Task 2.3: Feature 1 Release</strong></li>
+            <ul>
+                <li>Release the Login and Registration pages to the client for review and feedback.</li>
+            </ul>
+            <li><strong>Task 2.4: Feedback Incorporation</strong></li>
+            <ul>
+                <li>Make necessary adjustments based on the client’s feedback.</li>
+            </ul>
+        </ul>
+
+        <p><strong>Week 3: Feature 2 Development and Release (User Dashboard)</strong></p>
+        <ul>
+            <li><strong>Task 3.1: Dashboard Layout Development</strong></li>
+            <ul>
+                <li>Implement the dashboard layout, focusing on the display of user data, statistics, and interactive elements.</li>
+            </ul>
+            <li><strong>Task 3.2: Integration with Backend</strong></li>
+            <ul>
+                <li>Connect the front-end components with the backend API to display real-time user data.</li>
+            </ul>
+            <li><strong>Task 3.3: Internal Testing</strong></li>
+            <ul>
+                <li>Test the dashboard’s functionality, responsiveness, and cross-browser compatibility.</li>
+            </ul>
+            <li><strong>Task 3.4: Feature 2 Release</strong></li>
+            <ul>
+                <li>Release the User Dashboard feature to the client for review.</li>
+            </ul>
+            <li><strong>Task 3.5: Feedback Incorporation</strong></li>
+            <ul>
+                <li>Adjust the feature based on the feedback received.</li>
+            </ul>
+        </ul>
+
+        <p><strong>Week 4: Feature 3 Development and Release (Settings and Notification Preferences)</strong></p>
+        <ul>
+            <li><strong>Task 4.1: Settings Page Development</strong></li>
+            <ul>
+                <li>Develop the Settings page, allowing users to customize their experience (e.g., notification preferences, account settings).</li>
+            </ul>
+            <li><strong>Task 4.2: Notification Preferences Integration</strong></li>
+            <ul>
+                <li>Implement the front-end components to manage notification preferences, integrating with backend APIs.</li>
+            </ul>
+            <li><strong>Task 4.3: Internal Testing</strong></li>
+            <ul>
+                <li>Test the Settings and Notification Preferences pages for usability and functionality.</li>
+            </ul>
+            <li><strong>Task 4.4: Feature 3 Release</strong></li>
+            <ul>
+                <li>Release the Settings and Notification Preferences features to the client.</li>
+            </ul>
+            <li><strong>Task 4.5: Feedback Incorporation</strong></li>
+            <ul>
+                <li>Refine the features based on client feedback.</li>
+            </ul>
+        </ul>
+
+        <h3>Android Developer</h3>
+        <p><strong>Week 1: Initial Setup and Planning</strong></p>
+        <ul>
+            <li><strong>Task 1.1: Requirement Analysis and Planning</strong></li>
+            <ul>
+                <li>Analyze the design requirements for all UI features and plan the development and release schedule.</li>
+            </ul>
+            <li><strong>Task 1.2
+            <li><strong>Task 1.2: Project Setup</strong></li>
+            <ul>
+                <li>Set up the development environment, including access to design assets and frameworks.</li>
+            </ul>
+        </ul>
+
+        <p><strong>Week 2: Feature 1 Development and Release (User Authentication)</strong></p>
+        <ul>
+            <li><strong>Task: User Authentication Development</strong></li>
+            <ul>
+                <li>Implement user authentication for the app, ensuring secure login and registration.</li>
+            </ul>
+        </ul>
+
+        <p><strong>Week 3: Feature 2 Development and Release (User Dashboard)</strong></p>
+        <ul>
+            <li><strong>Task: Dashboard Development</strong></li>
+            <ul>
+                <li>Develop the Android dashboard, integrating user data display and interactive elements.</li>
+            </ul>
+        </ul>
+
+        <p><strong>Week 4: Feature 3 Development and Release (Notifications)</strong></p>
+        <ul>
+            <li><strong>Task: Notifications Development</strong></li>
+            <ul>
+                <li>Implement and test the notification system, ensuring integration with backend services and usability.</li>
+            </ul>
+        </ul>
+
+        <p><strong>Week 5: Feature 4 Development and Release (Performance Optimization)</strong></p>
+        <ul>
+            <li><strong>Task: Performance Optimization</strong></li>
+            <ul>
+                <li>Optimize the app's performance, focusing on memory management and responsiveness across devices.</li>
+            </ul>
+        </ul>
+
+    </div>
+</div>
+
+</body>
+</html>
