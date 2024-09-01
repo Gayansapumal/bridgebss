@@ -137,7 +137,7 @@ document.addEventListener("DOMContentLoaded", function() {
             title: "Login & Registration Development",
             start: new Date(e, n, 1),
             end: new Date(e, n, 7),  // Added 1 extra day
-            className: "bg-soft-warning",
+            className: "bg-soft-info",
             allDay: true,
             extendedProps: {
                 department: "App Developer"
@@ -148,7 +148,7 @@ document.addEventListener("DOMContentLoaded", function() {
             title: "Design Login Flow",
             start: new Date(e, n, 1),
             end: new Date(e, n, 4),  // Added 1 extra day
-            className: "bg-soft-warning",
+            className: "bg-soft-info",
             allDay: true,
             extendedProps: {
                 department: "App Developer"
@@ -159,7 +159,7 @@ document.addEventListener("DOMContentLoaded", function() {
             title: "Develop Registration Module",
             start: new Date(e, n, 4),
             end: new Date(e, n, 7),  // Added 1 extra day
-            className: "bg-soft-warning",
+            className: "bg-soft-info",
             allDay: true,
             extendedProps: {
                 department: "App Developer"
@@ -203,7 +203,7 @@ document.addEventListener("DOMContentLoaded", function() {
             title: "User Authentication Module",
             start: new Date(e, n, 7),
             end: new Date(e, n, 12),  // Added 1 extra day
-            className: "bg-soft-warning",
+            className: "bg-soft-info",
             allDay: true,
             extendedProps: {
                 department: "App Developer"
@@ -214,7 +214,7 @@ document.addEventListener("DOMContentLoaded", function() {
             title: "Implement OAuth2",
             start: new Date(e, n, 7),
             end: new Date(e, n, 9),  // Added 1 extra day
-            className: "bg-soft-warning",
+            className: "bg-soft-info",
             allDay: true,
             extendedProps: {
                 department: "App Developer"
@@ -225,7 +225,7 @@ document.addEventListener("DOMContentLoaded", function() {
             title: "Set Up JWT Tokens",
             start: new Date(e, n, 9),
             end: new Date(e, n, 12),  // Added 1 extra day
-            className: "bg-soft-warning",
+            className: "bg-soft-info",
             allDay: true,
             extendedProps: {
                 department: "App Developer"
@@ -269,7 +269,7 @@ document.addEventListener("DOMContentLoaded", function() {
             title: "Dashboard Development",
             start: new Date(e, n, 12),
             end: new Date(e, n, 17),  // Added 1 extra day
-            className: "bg-soft-warning",
+            className: "bg-soft-info",
             allDay: true,
             extendedProps: {
                 department: "App Developer"
@@ -280,7 +280,7 @@ document.addEventListener("DOMContentLoaded", function() {
             title: "Build Backend API for Dashboard",
             start: new Date(e, n, 12),
             end: new Date(e, n, 14),  // Added 1 extra day
-            className: "bg-soft-warning",
+            className: "bg-soft-info",
             allDay: true,
             extendedProps: {
                 department: "App Developer"
@@ -291,7 +291,7 @@ document.addEventListener("DOMContentLoaded", function() {
             title: "Connect Front-End with API",
             start: new Date(e, n, 14),
             end: new Date(e, n, 17),  // Added 1 extra day
-            className: "bg-soft-warning",
+            className: "bg-soft-info",
             allDay: true,
             extendedProps: {
                 department: "App Developer"
@@ -335,7 +335,7 @@ document.addEventListener("DOMContentLoaded", function() {
             title: "Notifications Development",
             start: new Date(e, n, 17),
             end: new Date(e, n, 22),  // Added 1 extra day
-            className: "bg-soft-warning",
+            className: "bg-soft-info",
             allDay: true,
             extendedProps: {
                 department: "App Developer"
@@ -346,7 +346,7 @@ document.addEventListener("DOMContentLoaded", function() {
             title: "Develop Notification API",
             start: new Date(e, n, 17),
             end: new Date(e, n, 20),  // Added 1 extra day
-            className: "bg-soft-warning",
+            className: "bg-soft-info",
             allDay: true,
             extendedProps: {
                 department: "App Developer"
@@ -357,7 +357,7 @@ document.addEventListener("DOMContentLoaded", function() {
             title: "Integrate Notifications with UI",
             start: new Date(e, n, 20),
             end: new Date(e, n, 22),  // Added 1 extra day
-            className: "bg-soft-warning",
+            className: "bg-soft-info",
             allDay: true,
             extendedProps: {
                 department: "App Developer"
