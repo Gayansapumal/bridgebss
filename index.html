@@ -1,280 +1,364 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en" data-layout="vertical" data-topbar="light" data-sidebar="dark" data-sidebar-size="lg"
+    data-sidebar-image="none" data-layout-mode="dark" data-body-image="img-1" data-preloader="disable">
+
 <head>
-    <meta charset="UTF-8">
+
+    <meta charset="utf-8" />
+    <title>Virtual Task Schedule</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Single-Line Gantt Chart with Descriptions</title>
-    <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700" rel="stylesheet">
-    <style>
-        body,
-        html {
-            font-family: "Roboto", sans-serif;
-            background-color: #cddade;
-            height: 100%;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
+    <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
+    <meta content="Themesbrand" name="author" />
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="assets/images/favicon.ico">
 
-        .header {
-            color: #202125;
-            margin-bottom: 40px;
-        }
+    <!-- fullcalendar css -->
+    <link href="assets/libs/fullcalendar/main.min.css" rel="stylesheet" type="text/css" />
 
-        .header h2 {
-            font-weight: 600;
-        }
+    <!-- Layout config Js -->
+    <script src="assets/js/layout.js"></script>
+    <!-- Bootstrap Css -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <!-- Icons Css -->
+    <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+    <!-- App Css-->
+    <link href="assets/css/app.min.css" rel="stylesheet" type="text/css" />
+    <!-- custom Css-->
+    <link href="assets/css/custom.min.css" rel="stylesheet" type="text/css" />
 
-        .header p {
-            font-weight: 300;
-        }
-
-        .wrapper {
-            max-width: 1200px;
-            min-width: 700px;
-            margin: 0 auto;
-            padding: 40px;
-        }
-
-        .gantt-container {
-            width: 100%;
-            overflow-x: auto;
-        }
-
-        .gantt-table {
-            border-collapse: collapse;
-            width: 100%;
-            box-shadow: 0 75px 125px -57px #7e8f94;
-        }
-
-        .gantt-table th,
-        .gantt-table td {
-            border: 1px solid black;
-            padding: 8px;
-            text-align: center;
-        }
-
-        .gantt-table th {
-            background-color: #f2f2f2;
-            position: sticky;
-            top: 0;
-            z-index: 1;
-        }
-
-        .gantt-task {
-            color: white;
-            padding: 5px;
-            border-radius: 3px;
-            margin: 1px;
-            font-weight: 500;
-            background-image: repeating-linear-gradient(45deg, transparent, transparent 5px, rgba(255, 255, 255, .1) 5px, rgba(255, 255, 255, .1) 12px);
-            cursor: pointer;
-            position: relative;
-        }
-
-        .gantt-task.front-end {
-            background-color: coral;
-        }
-
-        .gantt-task.android {
-            background-color: lightblue;
-        }
-
-        .description {
-            margin-top: 30px;
-        }
-
-        .description h3 {
-            font-size: 18px;
-            color: #202125;
-            margin-bottom: 10px;
-        }
-
-        .description p {
-            font-size: 16px;
-            margin-bottom: 15px;
-        }
-
-        .description ul {
-            list-style-type: disc;
-            margin-left: 20px;
-        }
-    </style>
 </head>
+
 <body>
 
-<div class="wrapper">
-    <div class="header">
-        <h2>Virtual Engineer Task Schedule</h2>
+    <!-- Left Sidebar End -->
+    <!-- Vertical Overlay-->
+
+    <!-- ============================================================== -->
+    <!-- Start right Content here -->
+    <!-- ============================================================== -->
+    <div class="">
+
+        <div class="page-content">
+            <div class="container-fluid">
+
+                <!-- start page title -->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+                            <h4 class="mb-sm-0">Virtual Task Scheduler</h4>
+
+                            <div class="page-title-right">
+                                <ol class="breadcrumb m-0">
+                                    <li class="breadcrumb-item"><a href="javascript: void(0);">Apps</a></li>
+                                    <li class="breadcrumb-item active">Tasl Schedule</li>
+                                </ol>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- end page title -->
+
+                <div class="row">
+                    <div class="col-12">
+                        <div class="row">
+                            <div class="col-xl-3">
+                                <div class="card card-h-100">
+                                    <div class="card-body">
+                                        <button class="btn btn-primary w-100" id="btn-new-event"><i
+                                                class="mdi mdi-plus"></i> New Employee</button>
+
+                                        <div id="external-events">
+                                            <br>
+                                            <p class="text-muted">Drag and drop your event or click in the calendar</p>
+                                            <div class="external-event fc-event bg-soft-success text-success"
+                                                data-class="bg-soft-success">
+                                                <i class="mdi mdi-checkbox-blank-circle font-size-11 me-2"></i>Front-End
+                                                Developer
+                                            </div>
+                                            <div class="external-event fc-event bg-soft-info text-info"
+                                                data-class="bg-soft-info">
+                                                <i class="mdi mdi-checkbox-blank-circle font-size-11 me-2"></i>Backend
+                                                Developer
+                                            </div>
+                                            <div class="external-event fc-event bg-soft-warning text-warning"
+                                                data-class="bg-soft-warning">
+                                                <i class="mdi mdi-checkbox-blank-circle font-size-11 me-2"></i>App
+                                                Developer
+                                            </div>
+                                            <div class="external-event fc-event bg-soft-danger text-danger"
+                                                data-class="bg-soft-danger">
+                                                <i class="mdi mdi-checkbox-blank-circle font-size-11 me-2"></i>Data
+                                                Scientist
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+
+                                <div class="card">
+                                    <div class="card-body bg-soft-info">
+                                        <div class="d-flex">
+                                            <div class="flex-shrink-0">
+                                                <i data-feather="calendar" class="text-info icon-dual-info"></i>
+                                            </div>
+                                            <div class="flex-grow-1 ms-3">
+                                                <h6 class="fs-15">Welcome to Your Virtual Task Scheduler!</h6>
+                                                <p class="text-muted mb-0">Tasks assigned to your developers will appear
+                                                    here. Click on a task to see the details and manage your team's
+                                                    workflow efficiently.</p>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--end card-->
+                            </div> <!-- end col-->
+
+                            <div class="col-xl-9">
+                                <div class="card card-h-100">
+                                    <div class="card-body">
+                                        <div id="calendar"></div>
+                                    </div>
+                                </div>
+                            </div><!-- end col -->
+                        </div>
+                        <!--end row-->
+
+                        <div style='clear:both'></div>
+
+                        <!-- Add New Event MODAL -->
+                        <div class="modal fade" id="event-modal" tabindex="-1">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content border-0">
+                                    <div class="modal-header p-3 bg-soft-info">
+                                        <h5 class="modal-title" id="modal-title">Event</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-hidden="true"></button>
+                                    </div>
+                                    <div class="modal-body p-4">
+                                        <form class="needs-validation" name="event-form" id="form-event" novalidate>
+                                            <div class="text-end">
+                                                <a href="#" class="btn btn-sm btn-soft-primary" id="edit-event-btn"
+                                                    data-id="edit-event" onclick="editEvent(this)"
+                                                    role="button">Edit</a>
+                                            </div>
+                                            <div class="event-details">
+                                                <div class="d-flex mb-2">
+                                                    <div class="flex-grow-1 d-flex align-items-center">
+                                                        <div class="flex-shrink-0 me-3">
+                                                            <i class="ri-calendar-event-line text-muted fs-16"></i>
+                                                        </div>
+                                                        <div class="flex-grow-1">
+                                                            <h6 class="d-block fw-semibold mb-0"
+                                                                id="event-start-date-tag"></h6>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="d-flex align-items-center mb-2">
+                                                    <div class="flex-shrink-0 me-3">
+                                                        <i class="ri-time-line text-muted fs-16"></i>
+                                                    </div>
+                                                    <div class="flex-grow-1">
+                                                        <h6 class="d-block fw-semibold mb-0"><span
+                                                                id="event-timepicker1-tag"></span> - <span
+                                                                id="event-timepicker2-tag"></span></h6>
+                                                    </div>
+                                                </div>
+                                                <div class="d-flex align-items-center mb-2">
+                                                    <div class="flex-shrink-0 me-3">
+                                                        <i class="ri-map-pin-line text-muted fs-16"></i>
+                                                    </div>
+                                                    <div class="flex-grow-1">
+                                                        <h6 class="d-block fw-semibold mb-0"> <span
+                                                                id="event-location-tag"></span></h6>
+                                                    </div>
+                                                </div>
+                                                <div class="d-flex mb-3">
+                                                    <div class="flex-shrink-0 me-3">
+                                                        <i class="ri-discuss-line text-muted fs-16"></i>
+                                                    </div>
+                                                    <div class="flex-grow-1">
+                                                        <p class="d-block text-muted mb-0" id="event-description-tag">
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row event-form">
+                                                <div class="col-12">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Type</label>
+                                                        <select class="form-select d-none" name="category"
+                                                            id="event-category" required>
+                                                            <option value="bg-soft-danger">Danger</option>
+                                                            <option value="bg-soft-success">Success</option>
+                                                            <option value="bg-soft-primary">Primary</option>
+                                                            <option value="bg-soft-info">Info</option>
+                                                            <option value="bg-soft-dark">Dark</option>
+                                                            <option value="bg-soft-warning">Warning</option>
+                                                        </select>
+                                                        <div class="invalid-feedback">Please select a valid event
+                                                            category</div>
+                                                    </div>
+                                                </div>
+                                                <!--end col-->
+                                                <div class="col-12">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Event Name</label>
+                                                        <input class="form-control d-none"
+                                                            placeholder="Enter event name" type="text" name="title"
+                                                            id="event-title" required value="" />
+                                                        <div class="invalid-feedback">Please provide a valid event name
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!--end col-->
+                                                <div class="col-12">
+                                                    <div class="mb-3">
+                                                        <label>Event Date</label>
+                                                        <div class="input-group d-none">
+                                                            <input type="text" id="event-start-date"
+                                                                class="form-control flatpickr flatpickr-input"
+                                                                placeholder="Select date" readonly required>
+                                                            <span class="input-group-text"><i
+                                                                    class="ri-calendar-event-line"></i></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!--end col-->
+                                                <div class="col-12" id="event-time">
+                                                    <div class="row">
+                                                        <div class="col-6">
+                                                            <div class="mb-3">
+                                                                <label class="form-label">Start Time</label>
+                                                                <div class="input-group d-none">
+                                                                    <input id="timepicker1" type="text"
+                                                                        class="form-control flatpickr flatpickr-input"
+                                                                        placeholder="Select start time" readonly>
+                                                                    <span class="input-group-text"><i
+                                                                            class="ri-time-line"></i></span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <div class="mb-3">
+                                                                <label class="form-label">End Time</label>
+                                                                <div class="input-group d-none">
+                                                                    <input id="timepicker2" type="text"
+                                                                        class="form-control flatpickr flatpickr-input"
+                                                                        placeholder="Select end time" readonly>
+                                                                    <span class="input-group-text"><i
+                                                                            class="ri-time-line"></i></span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!--end col-->
+                                                <div class="col-12">
+                                                    <div class="mb-3">
+                                                        <label for="event-location">Location</label>
+                                                        <div>
+                                                            <input type="text" class="form-control d-none"
+                                                                name="event-location" id="event-location"
+                                                                placeholder="Event location">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!--end col-->
+                                                <input type="hidden" id="eventid" name="eventid" value="" />
+                                                <div class="col-12">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Description</label>
+                                                        <textarea class="form-control d-none" id="event-description"
+                                                            placeholder="Enter a description" rows="3"
+                                                            spellcheck="false"></textarea>
+                                                    </div>
+                                                </div>
+                                                <!--end col-->
+                                            </div>
+                                            <!--end row-->
+                                            <div class="hstack gap-2 justify-content-end">
+                                                <button type="button" class="btn btn-soft-danger"
+                                                    id="btn-delete-event"><i class="ri-close-line align-bottom"></i>
+                                                    Delete</button>
+                                                <button type="submit" class="btn btn-success" id="btn-save-event">Add
+                                                    Event</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div> <!-- end modal-content-->
+                            </div> <!-- end modal dialog-->
+                        </div> <!-- end modal-->
+                        <!-- end modal-->
+                    </div>
+                </div> <!-- end row-->
+
+            </div>
+            <!-- container-fluid -->
+        </div>
+        <!-- End Page-content -->
+
+        <footer class="footer border-top">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <script>document.write(new Date().getFullYear())</script> © Velzon.
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="text-sm-end d-none d-sm-block">
+                            Design & Develop by Bridgebbs
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <!-- end main content-->
+
+    </div>
+    <!-- END layout-wrapper -->
+
+    <!--start back-to-top-->
+    <button onclick="topFunction()" class="btn btn-primary btn-icon" id="back-to-top">
+        <i class="ri-arrow-up-line"></i>
+    </button>
+    <!--end back-to-top-->
+
+    <!--preloader-->
+    <div id="preloader">
+        <div id="status">
+            <div class="spinner-border text-primary avatar-sm" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
     </div>
 
-    <div class="gantt-container">
-        <table class="gantt-table">
-            <thead>
-                <tr>
-                    <th>Role</th>
-                    <th>Week 36</th>
-                    <th>Week 37</th>
-                    <th>Week 38</th>
-                    <th>Week 39</th>
-                    <th>Week 40</th>
-                    <th>Week 41</th>
-                    <th>Week 42</th>
-                    <th>Week 43</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Front-End Dev</td>
-                    <td colspan="2" class="gantt-task front-end">Requirement Analysis and Planning</td>
-                    <td colspan="2" class="gantt-task front-end">Login & Registration Development</td>
-                    <td class="gantt-task front-end">Dashboard Development</td>
-                    <td colspan="2" class="gantt-task front-end">Settings & Notifications</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>Android Dev</td>
-                    <td colspan="2" class="gantt-task android">Requirement Analysis and Planning</td>
-                    <td colspan="1" class="gantt-task android">User Authentication Development</td>
-                    <td colspan="2" class="gantt-task android">Dashboard Development</td>
-                    <td colspan="2" class="gantt-task android">Notifications Development</td>
-                    <td class="gantt-task android">Performance Optimization</td>
-                </tr>
-            </tbody>
-        </table>
+    <div class="customizer-setting d-none d-md-block">
+        <div class="btn-primary btn-rounded shadow-lg btn btn-icon btn-lg p-2" data-bs-toggle="offcanvas"
+            data-bs-target="#theme-settings-offcanvas" aria-controls="theme-settings-offcanvas">
+            <i class='mdi mdi-spin mdi-cog-outline fs-22'></i>
+        </div>
     </div>
 
-    <div class="description">
-        <h3>Front-End Developer</h3>
-        <p><strong>Week 1: Initial Setup and Planning</strong></p>
-        <ul>
-            <li><strong>Task 1.1: Requirement Analysis and Planning</strong></li>
-            <ul>
-                <li>Analyze the design requirements for all UI features.</li>
-                <li>Plan the development and release schedule.</li>
-            </ul>
-            <li><strong>Task 1.2: Project Setup</strong></li>
-            <ul>
-                <li>Set up the development environment, including access to design assets and front-end frameworks (e.g., React, Redux).</li>
-                <li>Review existing codebases and UI components.</li>
-            </ul>
-        </ul>
 
-        <p><strong>Week 2: Feature 1 Development and Release (Login and Registration Pages)</strong></p>
-        <ul>
-            <li><strong>Task 2.1: Design Implementation</strong></li>
-            <ul>
-                <li>Develop the login and registration pages based on the provided designs.</li>
-            </ul>
-            <li><strong>Task 2.2: Internal Testing</strong></li>
-            <ul>
-                <li>Conduct internal testing to ensure the pages are responsive and work across different devices and browsers.</li>
-            </ul>
-            <li><strong>Task 2.3: Feature 1 Release</strong></li>
-            <ul>
-                <li>Release the Login and Registration pages to the client for review and feedback.</li>
-            </ul>
-            <li><strong>Task 2.4: Feedback Incorporation</strong></li>
-            <ul>
-                <li>Make necessary adjustments based on the client’s feedback.</li>
-            </ul>
-        </ul>
+    <!-- JAVASCRIPT -->
+    <script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/libs/simplebar/simplebar.min.js"></script>
+    <script src="assets/libs/node-waves/waves.min.js"></script>
+    <script src="assets/libs/feather-icons/feather.min.js"></script>
+    <script src="assets/js/pages/plugins/lord-icon-2.1.0.js"></script>
+    <script src="assets/js/plugins.js"></script>
 
-        <p><strong>Week 3: Feature 2 Development and Release (User Dashboard)</strong></p>
-        <ul>
-            <li><strong>Task 3.1: Dashboard Layout Development</strong></li>
-            <ul>
-                <li>Implement the dashboard layout, focusing on the display of user data, statistics, and interactive elements.</li>
-            </ul>
-            <li><strong>Task 3.2: Integration with Backend</strong></li>
-            <ul>
-                <li>Connect the front-end components with the backend API to display real-time user data.</li>
-            </ul>
-            <li><strong>Task 3.3: Internal Testing</strong></li>
-            <ul>
-                <li>Test the dashboard’s functionality, responsiveness, and cross-browser compatibility.</li>
-            </ul>
-            <li><strong>Task 3.4: Feature 2 Release</strong></li>
-            <ul>
-                <li>Release the User Dashboard feature to the client for review.</li>
-            </ul>
-            <li><strong>Task 3.5: Feedback Incorporation</strong></li>
-            <ul>
-                <li>Adjust the feature based on the feedback received.</li>
-            </ul>
-        </ul>
+    <!-- calendar min js -->
+    <script src="assets/libs/fullcalendar/main.min.js"></script>
 
-        <p><strong>Week 4: Feature 3 Development and Release (Settings and Notification Preferences)</strong></p>
-        <ul>
-            <li><strong>Task 4.1: Settings Page Development</strong></li>
-            <ul>
-                <li>Develop the Settings page, allowing users to customize their experience (e.g., notification preferences, account settings).</li>
-            </ul>
-            <li><strong>Task 4.2: Notification Preferences Integration</strong></li>
-            <ul>
-                <li>Implement the front-end components to manage notification preferences, integrating with backend APIs.</li>
-            </ul>
-            <li><strong>Task 4.3: Internal Testing</strong></li>
-            <ul>
-                <li>Test the Settings and Notification Preferences pages for usability and functionality.</li>
-            </ul>
-            <li><strong>Task 4.4: Feature 3 Release</strong></li>
-            <ul>
-                <li>Release the Settings and Notification Preferences features to the client.</li>
-            </ul>
-            <li><strong>Task 4.5: Feedback Incorporation</strong></li>
-            <ul>
-                <li>Refine the features based on client feedback.</li>
-            </ul>
-        </ul>
+    <!-- Calendar init -->
+    <script src="assets/js/pages/calendar.init.js"></script>
 
-        <h3>Android Developer</h3>
-        <p><strong>Week 1: Initial Setup and Planning</strong></p>
-        <ul>
-            <li><strong>Task 1.1: Requirement Analysis and Planning</strong></li>
-            <ul>
-                <li>Analyze the design requirements for all UI features and plan the development and release schedule.</li>
-            </ul>
-            <li><strong>Task 1.2
-            <li><strong>Task 1.2: Project Setup</strong></li>
-            <ul>
-                <li>Set up the development environment, including access to design assets and frameworks.</li>
-            </ul>
-        </ul>
-
-        <p><strong>Week 2: Feature 1 Development and Release (User Authentication)</strong></p>
-        <ul>
-            <li><strong>Task: User Authentication Development</strong></li>
-            <ul>
-                <li>Implement user authentication for the app, ensuring secure login and registration.</li>
-            </ul>
-        </ul>
-
-        <p><strong>Week 3: Feature 2 Development and Release (User Dashboard)</strong></p>
-        <ul>
-            <li><strong>Task: Dashboard Development</strong></li>
-            <ul>
-                <li>Develop the Android dashboard, integrating user data display and interactive elements.</li>
-            </ul>
-        </ul>
-
-        <p><strong>Week 4: Feature 3 Development and Release (Notifications)</strong></p>
-        <ul>
-            <li><strong>Task: Notifications Development</strong></li>
-            <ul>
-                <li>Implement and test the notification system, ensuring integration with backend services and usability.</li>
-            </ul>
-        </ul>
-
-        <p><strong>Week 5: Feature 4 Development and Release (Performance Optimization)</strong></p>
-        <ul>
-            <li><strong>Task: Performance Optimization</strong></li>
-            <ul>
-                <li>Optimize the app's performance, focusing on memory management and responsiveness across devices.</li>
-            </ul>
-        </ul>
-
-    </div>
-</div>
-
+    <!-- App js -->
+    <script src="assets/js/app.js"></script>
 </body>
+
 </html>
