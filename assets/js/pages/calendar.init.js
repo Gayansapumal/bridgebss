@@ -111,7 +111,7 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         },
         {
-            id: 1.1,
+            id: 2,
             title: "Gather Requirements",
             start: new Date(e, n, 1),
             end: new Date(e, n, 4),  // Added 1 extra day
@@ -122,7 +122,7 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         },
         {
-            id: 1.2,
+            id: 3,
             title: "Planning & Documentation",
             start: new Date(e, n, 4),
             end: new Date(e, n, 7),  // Added 1 extra day
