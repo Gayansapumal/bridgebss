@@ -4,6 +4,9 @@ var start_date = document.getElementById("event-start-date"),
     date_range = null,
     T_check = null;
 
+    
+    
+
 function flatPickrInit() {
     var e = {
         enableTime: !0,

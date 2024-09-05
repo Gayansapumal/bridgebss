@@ -1,5 +1,6 @@
 <!doctype html>
-<html lang="en" data-layout="vertical" data-topbar="dark" data-sidebar="dark" data-sidebar-size="lg" data-sidebar-image="none" data-preloader="disable">
+<html lang="en" data-layout="vertical" data-topbar="dark" data-sidebar="dark" data-sidebar-size="lg"
+    data-sidebar-image="none" data-preloader="disable">
 
 <head>
 
@@ -73,7 +74,7 @@
                                             <div class="external-event fc-event bg-soft-success text-success"
                                                 data-class="bg-soft-success">
                                                 <i class="mdi mdi-checkbox-blank-circle font-size-11 me-2"></i>Front-End
-                                                Developmet                                
+                                                Developmet
                                             </div>
                                             <div class="external-event fc-event bg-soft-info text-info"
                                                 data-class="bg-soft-info">
@@ -109,10 +110,19 @@
                                                     workflow efficiently.</p>
 
                                             </div>
+
                                         </div>
+
                                     </div>
                                 </div>
                                 <!--end card-->
+                                <div>
+                                    <h5 class="mb-1">Pending Task</h5>
+                                    <p class="text-muted">Awating for TIme</p>
+                                    <div class="pe-2 me-n1 mb-3" data-simplebar style="height: 430px">
+                                        <div id="Pending_task"></div>
+                                    </div>
+                                </div>
                             </div> <!-- end col-->
 
                             <div class="col-xl-9">
@@ -126,6 +136,111 @@
                         <!--end row-->
 
                         <div style='clear:both'></div>
+
+                        <!-- Add New Task Modal -->
+                        <div class="modal fade" id="new-task-modal" tabindex="-1" role="dialog"
+                            aria-labelledby="newTaskModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="newTaskModalLabel">Add New Task</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form id="new-task-form">
+                                            <div class="mb-3">
+                                                <label for="task-name" class="form-label">Task Name</label>
+                                                <input type="text" class="form-control" id="task-name"
+                                                    placeholder="Enter task name" required>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="task-description" class="form-label">Task
+                                                    Description</label>
+                                                <textarea class="form-control" id="task-description"
+                                                    placeholder="Enter task description" rows="3" required></textarea>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="task-category" class="form-label">Category</label>
+                                                <select class="form-select" id="task-category" required>
+                                                    <option value="" disabled selected>Select category</option>
+                                                    <option value="Front-End">Front-End Development</option>
+                                                    <option value="Back-End">Back-End Development</option>
+                                                    <option value="Data Science">Data Science</option>
+                                                </select>
+                                            </div>
+                                            <div class="text-end">
+                                                <button type="submit" class="btn btn-primary">Save Task</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Time and Cost Modal -->
+                        <div class="modal fade" id="time-cost-modal" tabindex="-1" role="dialog"
+                            aria-labelledby="timeCostModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="timeCostModalLabel">Enter Number of Days and Cost
+                                        </h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form id="time-cost-form">
+                                            <div class="mb-3">
+                                                <label for="task-days" class="form-label">Estimated Number of
+                                                    Days</label>
+                                                <input type="number" class="form-control" id="task-days"
+                                                    placeholder="Enter estimated number of days" required>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="task-cost" class="form-label">Estimated Cost ($)</label>
+                                                <input type="number" class="form-control" id="task-cost"
+                                                    placeholder="Enter estimated cost" required>
+                                            </div>
+                                            <div class="text-end">
+                                                <button type="submit" class="btn btn-primary">Save</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Approval Modal -->
+                        <div class="modal fade" id="approval-modal" tabindex="-1" role="dialog"
+                            aria-labelledby="approvalModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="approvalModalLabel">Approval Required</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>Do you approve the following task?</p>
+                                        <ul>
+                                            <li><strong>Task Name:</strong> <span id="approval-task-name"></span></li>
+                                            <li><strong>Days:</strong> <span id="approval-task-days"></span></li>
+                                            <li><strong>Cost:</strong> $<span id="approval-task-cost"></span></li>
+                                        </ul>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-danger" id="disapprove-task-btn"
+                                            data-bs-dismiss="modal">Disapprove</button>
+                                        <button type="button" class="btn btn-success" id="approve-task-btn"
+                                            data-bs-dismiss="modal">Approve</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
 
                         <!-- Add New Event MODAL -->
                         <div class="modal fade" id="event-modal" tabindex="-1">
@@ -255,7 +370,7 @@
                                                     </div>
                                                 </div>
                                                 <!--end col-->
-                                               
+
                                                 <!--end col-->
                                                 <input type="hidden" id="eventid" name="eventid" value="" />
                                                 <div class="col-12">
@@ -341,6 +456,266 @@
 
     <!-- App js -->
     <script src="assets/js/app.js"></script>
+
+    <script>
+
+        var E; // Declare E in the global scope
+
+        document.getElementById('btn-new-event').addEventListener('click', function () {
+            // Show the new task modal
+            var myModal = new bootstrap.Modal(document.getElementById('new-task-modal'));
+            myModal.show();
+        });
+
+        document.getElementById('new-task-form').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            // Capture form values
+            const taskName = document.getElementById('task-name').value;
+            const taskDescription = document.getElementById('task-description').value;
+            const taskCategory = document.getElementById('task-category').value;
+
+            // Append new task to the Pending Task section
+            const pendingTaskDiv = document.getElementById('Pending_task');
+
+            // Create a card-style container for the task
+            const taskItem = document.createElement('div');
+            taskItem.classList.add('card', 'mb-3');
+            taskItem.innerHTML = `
+        <div class="card-body">
+            <div class="d-flex mb-3">
+                <div class="flex-grow-1">
+                    <i class="mdi mdi-checkbox-blank-circle me-2 text-success"></i>
+                    <span class="fw-medium">Pending</span>
+                </div>
+                <div class="flex-shrink-0">
+                    <small class="badge badge-soft-primary ms-auto">${taskCategory}</small>
+                </div>
+            </div>
+            <h6 class="card-title fs-16">${taskName}</h6>
+            <p class="text-muted mb-2">${taskDescription}</p>
+            <p class="task-time-cost text-muted">Days: <span class="task-days">N/A</span>, Cost: $<span class="task-cost">N/A</span></p>
+        </div>
+    `;
+
+            taskItem.isApproved = false;  // Track if the task is approved
+            taskItem.isTimeAndCostFilled = false;  // Track if time and cost are filled
+
+            // Handle click events on the task item
+            taskItem.addEventListener('click', function () {
+                if (taskItem.isApproved) {
+                    // Trigger "Add Event" modal to ask for event date
+                    var eventModal = new bootstrap.Modal(document.getElementById('event-modal'));
+                    eventModal.show();
+
+                    // Populate the "Add Event" modal with task details
+                    document.getElementById('event-title').value = taskName;
+                    document.getElementById('event-description').value = taskDescription;
+                    document.getElementById('event-category').value = taskCategory;
+
+                    // On modal form submission, add the event to the calendar
+                    document.getElementById('form-event').addEventListener('submit', function (e) {
+                        e.preventDefault();
+
+                        // Get event start and end date from the modal
+                        const eventStartDate = document.getElementById('event-start-date').value;
+                        const eventEndDate = null;  // Add logic for the end date if needed
+
+                        // Add the task to the calendar
+                        E.addEvent({
+                            id: Math.random().toString(36).substring(2),  // Unique ID
+                            title: taskName,
+                            start: new Date(eventStartDate),
+                            end: new Date(eventEndDate || eventStartDate),  // Optional end date
+                            allDay: true,
+                            className: taskCategory === "Front-End" ? 'bg-soft-success' : 'bg-soft-primary',
+                            description: taskDescription
+                        });
+                        E.render();  // Refresh the calendar
+
+                        // Close the event modal after adding the task
+                        eventModal.hide();
+                        alert('Task has been added to the calendar!');
+                    });
+                } else if (taskItem.isTimeAndCostFilled) {
+                    var approvalModal = new bootstrap.Modal(document.getElementById('approval-modal'));
+                    approvalModal.show();
+
+                    document.getElementById('approval-task-name').innerText = taskName;
+                    document.getElementById('approval-task-days').innerText = taskItem.querySelector('.task-days').innerText;
+                    document.getElementById('approval-task-cost').innerText = taskItem.querySelector('.task-cost').innerText;
+
+                    document.getElementById('approve-task-btn').taskItem = taskItem;
+                    document.getElementById('disapprove-task-btn').taskItem = taskItem;
+                } else {
+                    var timeCostModal = new bootstrap.Modal(document.getElementById('time-cost-modal'));
+                    timeCostModal.show();
+                    document.getElementById('time-cost-form').taskItem = taskItem;
+                }
+            });
+
+            pendingTaskDiv.appendChild(taskItem);
+            var myModalEl = document.getElementById('new-task-modal');
+            var modal = bootstrap.Modal.getInstance(myModalEl);
+            modal.hide();
+            document.getElementById('new-task-form').reset();
+        });
+
+        document.getElementById('time-cost-form').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const taskDays = document.getElementById('task-days').value;
+            const taskCost = document.getElementById('task-cost').value;
+
+            const taskItem = this.taskItem;
+
+            if (taskItem) {
+                taskItem.querySelector('.task-days').innerText = taskDays;
+                taskItem.querySelector('.task-cost').innerText = taskCost;
+                taskItem.isTimeAndCostFilled = true;
+            }
+
+            var timeCostModalEl = document.getElementById('time-cost-modal');
+            var modalInstance = bootstrap.Modal.getInstance(timeCostModalEl);
+            modalInstance.hide();
+            document.getElementById('time-cost-form').reset();
+        });
+
+
+
+        document.addEventListener("DOMContentLoaded", function () {
+            flatPickrInit();
+            var g = new bootstrap.Modal(document.getElementById("event-modal"), {
+                keyboard: !1
+            }),
+                d = (document.getElementById("event-modal"), document.getElementById("modal-title")),
+                i = document.getElementById("form-event"),
+                v = null,
+                p = document.getElementsByClassName("needs-validation"),
+                e = new Date,
+                t = e.getDate(),
+                n = e.getMonth(),
+                e = e.getFullYear(),
+                a = FullCalendar.Draggable,
+                l = document.getElementById("external-events"),
+                y = [
+                    // Front-End Developer Tasks with Subtasks
+                    
+                    {
+                        id: 2,
+                        title: "Gather Requirements",
+                        start: new Date(e, n, 1),
+                        end: new Date(e, n, 4),  // Added 1 extra day
+                        className: "bg-soft-success",
+                        allDay: true,
+                        extendedProps: {
+                            department: "Front-End Developer"
+                        }
+                    },
+                    {
+                        id: 3,
+                        title: "Planning & Documentation",
+                        start: new Date(e, n, 4),
+                        end: new Date(e, n, 7),  // Added 1 extra day
+                        className: "bg-soft-success",
+                        allDay: true,
+                        extendedProps: {
+                            department: "Front-End Developer"
+                        }
+                    }
+
+                ];
+
+            // Initialize Calendar
+            var calendarEl = document.getElementById("calendar");
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                timeZone: "local",
+                editable: true,
+                droppable: true,
+                selectable: true,
+                navLinks: true,
+                initialView: "dayGridMonth",
+                themeSystem: "bootstrap",
+                headerToolbar: {
+                    left: "prev,next today",
+                    center: "title",
+                    right: "dayGridMonth,timeGridWeek,timeGridDay,listMonth"
+                },
+                events: y, // Load initial events
+            });
+
+            calendar.render();
+
+            // Function to get the latest end date among existing events
+            function getLatestEndDate() {
+                const events = calendar.getEvents();
+                let latestEndDate = new Date();
+
+                events.forEach(function (event) {
+                    const eventEnd = event.end ? event.end : event.start; // Use end date if available, else use start date
+                    if (eventEnd > latestEndDate) {
+                        latestEndDate = eventEnd;
+                    }
+                });
+
+                return latestEndDate;
+            }
+
+            // Handle Approval and add the task to the calendar with correct duration
+            document.getElementById('approve-task-btn').addEventListener('click', function () {
+                const taskItem = this.taskItem;
+                if (taskItem) {
+                    taskItem.isApproved = true;
+                    alert('Task approved! The task has been added to the calendar.');
+                    taskItem.remove();
+
+                    // Extract task details
+                    const taskTitle = taskItem.querySelector('.card-title').innerText;
+                    const taskDescription = taskItem.querySelector('.text-muted.mb-2').innerText;
+                    const taskCategory = taskItem.querySelector('.badge').innerText;
+                    const taskDays = parseInt(taskItem.querySelector('.task-days').innerText); // Get the number of days from the task
+
+                    // Find the latest end date of existing events
+                    let startDate = getLatestEndDate();
+                    startDate.setDate(startDate.getDate() + 1); // Set start date to one day after the latest end date
+
+                    // Calculate the end date based on the task's duration
+                    const endDate = new Date(startDate);
+                    endDate.setDate(startDate.getDate() + taskDays); // Add the number of task days to calculate the end date
+
+                    // Add the task as an event to the calendar
+                    calendar.addEvent({
+                        id: Math.random().toString(36).substring(2),  // Unique ID
+                        title: taskTitle,
+                        start: startDate,  // Start time of the event
+                        end: endDate,  // End time set based on task duration
+                        allDay: true,  // Set this to true since we're dealing with full-day events
+                        className: taskCategory === "Front-End" ? 'bg-soft-success' : 'bg-soft-primary',  // Adjust based on task category
+                        description: taskDescription
+                    });
+
+                    // Re-render the calendar
+                    calendar.render();
+                }
+            });
+
+        });
+
+
+
+
+
+        document.getElementById('disapprove-task-btn').addEventListener('click', function () {
+            const taskItem = this.taskItem;
+            if (taskItem) {
+                taskItem.remove();
+                alert('Task disapproved and removed!');
+            }
+        });
+
+
+
+    </script>
 </body>
 
 </html>
